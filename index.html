@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Organizador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Mi Organizador</h1>
+      <p id="fechaActual"></p>
+    </div>
+    <div class="xp-box">
+      <strong id="puntos">0 XP</strong>
+      <span id="nivel">Nivel 1</span>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-section="inicio">🏠 Inicio</button>
+    <button class="nav-btn" data-section="hoy">📅 Hoy</button>
+    <button class="nav-btn" data-section="tareas">📋 Tareas</button>
+    <button class="nav-btn" data-section="proyectos">📁 Proyectos</button>
+  </nav>
+
+  <main>
+    <section id="inicio" class="section active">
+      <div class="hero card">
+        <h2>¡Hola! 👋</h2>
+        <p>Organiza tus cosas y gana XP por avanzar.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat card"><span>⭐</span><strong id="xpInicio">0</strong><small>XP total</small></div>
+        <div class="stat card"><span>📋</span><strong id="pendientesInicio">0</strong><small>Tareas pendientes</small></div>
+        <div class="stat card"><span>📁</span><strong id="proyectosInicio">0</strong><small>Proyectos activos</small></div>
+      </div>
+
+      <div class="card">
+        <h2>Progreso de nivel</h2>
+        <div class="progress"><div id="barraXP"></div></div>
+        <p id="textoXP">0 / 100 XP</p>
+      </div>
+
+      <div class="card">
+        <h2>Lo de hoy</h2>
+        <div id="resumenHoy"></div>
+      </div>
+    </section>
+
+    <section id="hoy" class="section">
+      <div class="section-head">
+        <div>
+          <h2>📅 Tareas de hoy</h2>
+          <p>Estas tareas se reinician automáticamente al cambiar de día.</p>
+        </div>
+        <button class="primary" onclick="abrirModalTarea(true)">+ Añadir</button>
+      </div>
+      <div id="listaHoy"></div>
+    </section>
+
+    <section id="tareas" class="section">
+      <div class="section-head">
+        <div>
+          <h2>📋 Tareas</h2>
+          <p>Tareas normales, con fecha opcional.</p>
+        </div>
+        <button class="primary" onclick="abrirModalTarea(false)">+ Añadir</button>
+      </div>
+      <div class="filters">
+        <button class="filter active" data-filter="todas">Todas</button>
+        <button class="filter" data-filter="pendientes">Pendientes</button>
+        <button class="filter" data-filter="hechas">Hechas</button>
+      </div>
+      <div id="listaTareas"></div>
+    </section>
+
+    <section id="proyectos" class="section">
+      <div class="section-head">
+        <div>
+          <h2>📁 Proyectos</h2>
+          <p>Divide tus proyectos en pasos pequeños para terminarlos.</p>
+        </div>
+        <button class="primary" onclick="abrirModalProyecto()">+ Proyecto</button>
+      </div>
+      <div id="listaProyectos"></div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close" onclick="cerrarModal()">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
